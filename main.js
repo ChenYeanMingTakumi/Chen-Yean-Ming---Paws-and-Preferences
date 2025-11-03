@@ -14,6 +14,7 @@ const controls = document.querySelector(".controls");
 let queue = [];
 let liked = likesStore.get();
 let current = null;
+let sessionLiked = [];
 
 init();
 
@@ -23,6 +24,7 @@ async function init() {
     renderNext();
     wireButtons();
     renderSummaryIfDone();
+    sessionLiked = [];
 }
 
 function wireButtons() {
@@ -152,6 +154,9 @@ function like(src) {
         liked.push(src);
         likesStore.set(liked);
     }
+    if(!sessionLiked.includes(src)) {
+        sessionLiked.push(src);
+    }
 }
 
 function renderSummaryIfDone() {
@@ -160,8 +165,9 @@ function renderSummaryIfDone() {
     deck.hidden = true;
     summaryEl.hidden = false;
     controls.hidden = true;
-    summaryStats.textContent = `You liked ${liked.length} out of ${N} cats.`;
-    likedGrid.innerHTML = liked.map(u => `<img src="${u}" alt="Liked cat" />`).join("");
+    summaryStats.textContent = `You liked ${sessionLiked.length} out of ${N} cats.`;
+    // Show only images liked during this session/cycle
+    likedGrid.innerHTML = sessionLiked.map(u => `<img src="${u}" alt="Liked cat" />`).join("");
 }
 
 function showToast(msg) {
