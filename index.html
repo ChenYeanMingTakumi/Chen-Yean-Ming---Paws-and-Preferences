@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" ,viewport-fit="cover"/>
+    <title>Paws & Preferences</title>
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <h1>🐾 Paws & Preferences</h1>
+      <button id="resetBtn" class="ghost">Reset</button>
+    </header>
+
+    <main id="app">
+      <section id="deck" aria-live="polite"></section>
+
+      <div class="controls">
+        <button id="likeBtn" aria-label="Like">👍</button>
+        <button id="dislikeBtn"   aria-label="Dislike">👎</button>
+      </div>
+
+      <section id="summary" hidden>
+        <h2>Your favourites</h2>
+        <p id="summaryStats"></p>
+        <div id="likedGrid" class="grid"></div>
+        <button id="restartBtn">Start Over</button>
+      </section>
+    </main>
+
+    <footer class="foot">Images from cataas.com</footer>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
